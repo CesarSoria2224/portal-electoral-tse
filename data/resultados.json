@@ -1,0 +1,25 @@
+{
+  "eleccion": "Elecciones Presidenciales Bolivia 2026",
+  "estado": "Conteo oficial preliminar",
+  "participacion": 74.2,
+  "actas_procesadas": 88.5,
+  "total_votos": 5421300,
+  "ultima_actualizacion": "2026-08-15 20:45",
+  "resultados": [
+    {
+      "candidato_id": 1,
+      "votos": 2145000,
+      "porcentaje": 39.6
+    },
+    {
+      "candidato_id": 2,
+      "votos": 1873000,
+      "porcentaje": 34.5
+    },
+    {
+      "candidato_id": 3,
+      "votos": 1403300,
+      "porcentaje": 25.9
+    }
+  ]
+}

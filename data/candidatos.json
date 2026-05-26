@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "nombre": "Carlos Mendoza",
+    "partido": "Movimiento Democrático Nacional",
+    "sigla": "MDN",
+    "color": "#1d4ed8",
+    "imagen": "assets/images/candidato1.png"
+  },
+  {
+    "id": 2,
+    "nombre": "Ana Torres",
+    "partido": "Frente Popular Unido",
+    "sigla": "FPU",
+    "color": "#dc2626",
+    "imagen": "assets/images/candidato2.png"
+  },
+  {
+    "id": 3,
+    "nombre": "Luis Herrera",
+    "partido": "Alianza Ciudadana",
+    "sigla": "AC",
+    "color": "#16a34a",
+    "imagen": "assets/images/candidato3.png"
+  }
+]

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portal Electoral TSE</title>
+
+  <link rel="stylesheet" href="css/styles.css">
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="logo-section">
+      <h1>Tribunal Supremo Electoral</h1>
+      <p>Portal Oficial de Resultados Electorales</p>
+    </div>
+
+    <nav class="navbar">
+      <a href="index.html">Inicio</a>
+      <a href="resultados.html">Resultados</a>
+      <a href="departamentos.html">Departamentos</a>
+      <a href="reportes.html">Reportes</a>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <h2 id="eleccion-title">Cargando elección...</h2>
+    <p id="estado-eleccion">Actualizando información...</p>
+  </section>
+
+  <!-- STATS -->
+  <section class="stats-grid">
+    <div class="stat-card">
+      <h3>Participación</h3>
+      <p id="participacion">--%</p>
+    </div>
+
+    <div class="stat-card">
+      <h3>Actas Procesadas</h3>
+      <p id="actas">--%</p>
+    </div>
+
+    <div class="stat-card">
+      <h3>Total de Votos</h3>
+      <p id="votos">--</p>
+    </div>
+
+    <div class="stat-card">
+      <h3>Última Actualización</h3>
+      <p id="actualizacion">--</p>
+    </div>
+  </section>
+
+  <!-- CANDIDATOS -->
+  <section class="section">
+    <h2>Resultados por Candidato</h2>
+    <div id="candidatos-container" class="cards-grid"></div>
+  </section>
+
+  <!-- CHART -->
+  <section class="section">
+    <h2>Distribución Electoral</h2>
+    <div class="chart-container">
+      <canvas id="resultsChart"></canvas>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p>Tribunal Supremo Electoral - Bolivia 2026</p>
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

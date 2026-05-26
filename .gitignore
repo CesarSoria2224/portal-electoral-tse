@@ -1,0 +1,59 @@
+# =========================
+# Sistema operativo
+# =========================
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# =========================
+# VS Code / IDE
+# =========================
+.vscode/
+.idea/
+.history/
+
+# =========================
+# Logs
+# =========================
+*.log
+
+# =========================
+# Variables / secretos
+# =========================
+.env
+.env.*
+*.pem
+*.key
+
+# =========================
+# AWS credenciales locales
+# =========================
+.aws/
+credentials
+config
+
+# =========================
+# Archivos temporales
+# =========================
+tmp/
+temp/
+*.tmp
+
+# =========================
+# Node (por si luego agregas tooling)
+# =========================
+node_modules/
+dist/
+build/
+
+# =========================
+# Cobertura / testing
+# =========================
+coverage/
+test-output/
+
+# =========================
+# Archivos swap
+# =========================
+*.swp
+*.swo

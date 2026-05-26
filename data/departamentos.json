@@ -1,0 +1,30 @@
+[
+  {
+    "nombre": "La Paz",
+    "participacion": 76.1,
+    "votos": 1023400,
+    "ganador": "Carlos Mendoza",
+    "porcentaje_ganador": 43.2
+  },
+  {
+    "nombre": "Santa Cruz",
+    "participacion": 72.5,
+    "votos": 1456700,
+    "ganador": "Ana Torres",
+    "porcentaje_ganador": 41.8
+  },
+  {
+    "nombre": "Cochabamba",
+    "participacion": 74.9,
+    "votos": 932100,
+    "ganador": "Carlos Mendoza",
+    "porcentaje_ganador": 39.7
+  },
+  {
+    "nombre": "Chuquisaca",
+    "participacion": 71.4,
+    "votos": 312000,
+    "ganador": "Luis Herrera",
+    "porcentaje_ganador": 38.5
+  }
+]

@@ -1,0 +1,12 @@
+[
+  {
+    "titulo": "Reporte General de Resultados",
+    "fecha": "2026-08-15",
+    "archivo": "assets/reportes/reporte-general.pdf"
+  },
+  {
+    "titulo": "Reporte por Departamentos",
+    "fecha": "2026-08-15",
+    "archivo": "assets/reportes/reporte-departamentos.pdf"
+  }
+]
