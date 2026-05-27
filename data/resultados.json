@@ -1,7 +1,7 @@
 {
   "eleccion": "Elecciones Presidenciales Bolivia 2026",
   "estado": "Conteo oficial actualizado",
-  "participacion": "error",
+  "participacion": 80.1,
   "actas_procesadas": 88.5,
   "total_votos": 5421300,
   "ultima_actualizacion": "2026-08-15 20:45",
