@@ -1,7 +1,7 @@
 [
   {
     "id": 1,
-    "nombre": "Carlos Mendoza",
+    "nombre": "Javier Rojas",
     "partido": "Movimiento Democrático Nacional",
     "sigla": "MDN",
     "color": "#1d4ed8",
@@ -9,7 +9,7 @@
   },
   {
     "id": 2,
-    "nombre": "Ana Torres",
+    "nombre": "María Fernández",
     "partido": "Frente Popular Unido",
     "sigla": "FPU",
     "color": "#dc2626",
