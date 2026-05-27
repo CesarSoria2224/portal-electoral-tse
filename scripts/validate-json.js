@@ -1,137 +1,148 @@
-const fs = require('fs');
+const fs = require("fs");
 
-function loadJSON(path) {
-    try {
-        return JSON.parse(fs.readFileSync(path, 'utf8'));
-    } catch (err) {
-        throw new Error(`JSON inválido en ${path}: ${err.message}`);
-    }
+function leerJSON(ruta) {
+  return JSON.parse(fs.readFileSync(ruta, "utf8"));
 }
 
-function validateResultados(data) {
-    const required = [
-        'eleccion',
-        'estado',
-        'participacion',
-        'actas_procesadas',
-        'total_votos',
-        'ultima_actualizacion',
-        'resultados'
-    ];
-
-    required.forEach(field => {
-        if (!(field in data)) {
-            throw new Error(`Falta campo obligatorio en resultados.json: ${field}`);
-        }
-    });
-
-    if (typeof data.participacion !== 'number' || data.participacion < 0 || data.participacion > 100) {
-        throw new Error('participacion inválida en resultados.json');
-    }
-
-    if (typeof data.actas_procesadas !== 'number' || data.actas_procesadas < 0 || data.actas_procesadas > 100) {
-        throw new Error('actas_procesadas inválida en resultados.json');
-    }
-
-    if (typeof data.total_votos !== 'number' || data.total_votos < 0) {
-        throw new Error('total_votos inválido en resultados.json');
-    }
-
-    if (!Array.isArray(data.resultados)) {
-        throw new Error('resultados debe ser un array');
-    }
-
-    data.resultados.forEach((item, index) => {
-        if (typeof item.candidato_id !== 'number') {
-            throw new Error(`candidato_id inválido en resultados[${index}]`);
-        }
-
-        if (typeof item.votos !== 'number' || item.votos < 0) {
-            throw new Error(`votos inválidos en resultados[${index}]`);
-        }
-
-        if (typeof item.porcentaje !== 'number' || item.porcentaje < 0 || item.porcentaje > 100) {
-            throw new Error(`porcentaje inválido en resultados[${index}]`);
-        }
-    });
+function error(msg) {
+  console.error(msg);
+  process.exit(1);
 }
 
-function validateCandidatos(data) {
-    if (!Array.isArray(data)) {
-        throw new Error('candidatos.json debe ser un array');
-    }
+/* =========================
+   candidatos.json
+========================= */
+const candidatos = leerJSON("data/candidatos.json");
 
-    data.forEach((item, index) => {
-        if (typeof item.id !== 'number') {
-            throw new Error(`id inválido en candidatos[${index}]`);
-        }
-
-        if (typeof item.nombre !== 'string' || !item.nombre.trim()) {
-            throw new Error(`nombre inválido en candidatos[${index}]`);
-        }
-
-        if (typeof item.partido !== 'string' || !item.partido.trim()) {
-            throw new Error(`partido inválido en candidatos[${index}]`);
-        }
-
-        if (typeof item.sigla !== 'string' || !item.sigla.trim()) {
-            throw new Error(`sigla inválida en candidatos[${index}]`);
-        }
-
-        if (typeof item.imagen !== 'string' || !item.imagen.trim()) {
-            throw new Error(`imagen inválida en candidatos[${index}]`);
-        }
-    });
+if (!Array.isArray(candidatos)) {
+  error("candidatos.json debe ser un arreglo");
 }
 
-function validateDepartamentos(data) {
-    if (!Array.isArray(data)) {
-        throw new Error('departamentos.json debe ser un array');
-    }
+candidatos.forEach((c, i) => {
+  if (typeof c.id !== "number") {
+    error(`id inválido en candidatos[${i}]`);
+  }
 
-    data.forEach((item, index) => {
-        if (typeof item.nombre !== 'string' || !item.nombre.trim()) {
-            throw new Error(`nombre inválido en departamentos[${index}]`);
-        }
+  if (typeof c.nombre !== "string") {
+    error(`nombre inválido en candidatos[${i}]`);
+  }
 
-        if (typeof item.participacion !== 'number' || item.participacion < 0 || item.participacion > 100) {
-            throw new Error(`participacion inválida en departamentos[${index}]`);
-        }
+  if (typeof c.partido !== "string") {
+    error(`partido inválido en candidatos[${i}]`);
+  }
 
-        if (typeof item.ganador_id !== 'number') {
-            throw new Error(`ganador_id inválido en departamentos[${index}]`);
-        }
-    });
+  if (typeof c.sigla !== "string") {
+    error(`sigla inválida en candidatos[${i}]`);
+  }
+
+  if (typeof c.color !== "string") {
+    error(`color inválido en candidatos[${i}]`);
+  }
+
+  if (typeof c.imagen !== "string") {
+    error(`imagen inválida en candidatos[${i}]`);
+  }
+});
+
+/* =========================
+   resultados.json
+========================= */
+const resultados = leerJSON("data/resultados.json");
+
+if (typeof resultados.eleccion !== "string") {
+  error("eleccion inválido en resultados.json");
 }
 
-function validateReportes(data) {
-    if (!Array.isArray(data)) {
-        throw new Error('reportes.json debe ser un array');
-    }
-
-    data.forEach((item, index) => {
-        if (typeof item.titulo !== 'string' || !item.titulo.trim()) {
-            throw new Error(`titulo inválido en reportes[${index}]`);
-        }
-
-        if (typeof item.archivo !== 'string' || !item.archivo.trim()) {
-            throw new Error(`archivo inválido en reportes[${index}]`);
-        }
-
-        if (typeof item.fecha !== 'string' || !item.fecha.trim()) {
-            throw new Error(`fecha inválida en reportes[${index}]`);
-        }
-    });
+if (typeof resultados.estado !== "string") {
+  error("estado inválido en resultados.json");
 }
 
-try {
-    validateResultados(loadJSON('data/resultados.json'));
-    validateCandidatos(loadJSON('data/candidatos.json'));
-    validateDepartamentos(loadJSON('data/departamentos.json'));
-    validateReportes(loadJSON('data/reportes.json'));
-
-    console.log('Validación JSON completada correctamente');
-} catch (err) {
-    console.error(err.message);
-    process.exit(1);
+if (typeof resultados.participacion !== "number") {
+  error("participacion inválido en resultados.json");
 }
+
+if (typeof resultados.actas_procesadas !== "number") {
+  error("actas_procesadas inválido en resultados.json");
+}
+
+if (typeof resultados.total_votos !== "number") {
+  error("total_votos inválido en resultados.json");
+}
+
+if (typeof resultados.ultima_actualizacion !== "string") {
+  error("ultima_actualizacion inválido en resultados.json");
+}
+
+if (!Array.isArray(resultados.resultados)) {
+  error("resultados.resultados debe ser un arreglo");
+}
+
+resultados.resultados.forEach((r, i) => {
+  if (typeof r.candidato_id !== "number") {
+    error(`candidato_id inválido en resultados[${i}]`);
+  }
+
+  if (typeof r.votos !== "number") {
+    error(`votos inválido en resultados[${i}]`);
+  }
+
+  if (typeof r.porcentaje !== "number") {
+    error(`porcentaje inválido en resultados[${i}]`);
+  }
+});
+
+/* =========================
+   departamentos.json
+========================= */
+const departamentos = leerJSON("data/departamentos.json");
+
+if (!Array.isArray(departamentos)) {
+  error("departamentos.json debe ser un arreglo");
+}
+
+departamentos.forEach((d, i) => {
+  if (typeof d.nombre !== "string") {
+    error(`nombre inválido en departamentos[${i}]`);
+  }
+
+  if (typeof d.participacion !== "number") {
+    error(`participacion inválido en departamentos[${i}]`);
+  }
+
+  if (typeof d.votos !== "number") {
+    error(`votos inválido en departamentos[${i}]`);
+  }
+
+  if (typeof d.ganador !== "string") {
+    error(`ganador inválido en departamentos[${i}]`);
+  }
+
+  if (typeof d.porcentaje_ganador !== "number") {
+    error(`porcentaje_ganador inválido en departamentos[${i}]`);
+  }
+});
+
+/* =========================
+   reportes.json
+========================= */
+const reportes = leerJSON("data/reportes.json");
+
+if (!Array.isArray(reportes)) {
+  error("reportes.json debe ser un arreglo");
+}
+
+reportes.forEach((r, i) => {
+  if (typeof r.titulo !== "string") {
+    error(`titulo inválido en reportes[${i}]`);
+  }
+
+  if (typeof r.fecha !== "string") {
+    error(`fecha inválida en reportes[${i}]`);
+  }
+
+  if (typeof r.archivo !== "string") {
+    error(`archivo inválido en reportes[${i}]`);
+  }
+});
+
+console.log("Validación JSON completada correctamente");
