@@ -9,17 +9,17 @@
     {
       "candidato_id": 1,
       "votos": 2145000,
-      "porcentaje": 36.5
+      "porcentaje": 40
     },
     {
       "candidato_id": 2,
       "votos": 1873000,
-      "porcentaje": 50.5
+      "porcentaje": 20.2
     },
     {
       "candidato_id": 3,
       "votos": 1403300,
-      "porcentaje": 25.9
+      "porcentaje": 41.8
     }
   ]
 }
